@@ -58,18 +58,19 @@ def heatmap(y_true, y_pred, name):
     ax.set_title("Classification Report")
     f.tight_layout()
     if os.path.isdir("plots/"+DATE):
-        plt.savefig("plots/"+DATE+name+time.strftime('%H:%M:%S')+"_classification_report.jpg")
+        plt.savefig("plots/"+DATE+name+time.strftime('%H_%M_%S')+"_classification_report.jpg")
     else:
         os.mkdir("plots/"+DATE)
-        plt.savefig("plots/"+DATE+name+time.strftime('%H:%M:%S')+"_classification_report.jpg")
+        plt.savefig("plots/"+DATE+name+time.strftime('%H_%M_%S')+"_classification_report.jpg")
     f.clf()
 
     f, ax= plt.subplots(figsize=(5,5))
+    #4.23及以前的图横轴True，纵轴Prediction
     sns.heatmap(pd.DataFrame(clf_cm, index=target_names, columns=target_names).T, 
                     annot=True, cmap="BuGn", fmt="d")
     ax.set_title("Confusion Matrix")
     f.tight_layout()
-    plt.savefig("plots/"+DATE+name+time.strftime('%H:%M:%S')+"_confusion_matrix.jpg")
+    plt.savefig("plots/"+DATE+name+time.strftime('%H_%M_%S')+"_confusion_matrix.jpg")
 
 
 
