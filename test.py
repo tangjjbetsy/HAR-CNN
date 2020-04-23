@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from Preprocessing import *
+from utils.Preprocessing import *
 
 def load_data(file_path):
     data = pd.read_csv(file_path, sep="\s+")

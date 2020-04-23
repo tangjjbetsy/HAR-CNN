@@ -33,14 +33,23 @@ class Preprocessing():
         size.append(N) 
         return ones.view(*size)
     
-    def _concatenate(self, pair, dataX, dataY):
+    def _concatenate(self, pair, dataX, dataY, amount, random=True):
         actionA = dataX[np.argwhere(dataY==pair[0])[:,0]]
         actionB = dataX[np.argwhere(dataY==pair[1])[:,0]]
-        for i in range(len(actionA)):
-            cut = np.random.randint(0, 128)
-            selection = np.random.randint(0,len(actionB))
-            actionA[i,:,cut:]= actionB[selection,:,cut:]
-        return len(actionA), actionA
+        for n in range(amount):
+            temp = actionA
+            for i in range(len(actionA)):
+                if random:
+                    cut = np.random.randint(0, 128)
+                else:
+                    cut = 64
+                selection = np.random.randint(0,len(actionB))
+                temp[i,:,cut:]= actionB[selection,:,cut:]
+            if n == 0:
+                output = temp
+            else:
+                output = np.concatenate((output,temp), axis=0)
+        return len(output), output
     
     def _stack(self, dataX, fl, fd):
         for i in range(1, len(fl)):
@@ -81,7 +90,7 @@ class Preprocessing():
         dataY = np.asarray(self._load_data(ft[1]).values)
         for i in range(NUM_CLASSES):
             pair = PAIR[i+1]
-            num, concatenation = self._concatenate(pair, dataX, dataY)
+            num, concatenation = self._concatenate(pair, dataX, dataY, 2, False)
             if i == 0:
                 outputX = torch.FloatTensor(concatenation)
                 outputY = torch.LongTensor(np.repeat(i+1, num))

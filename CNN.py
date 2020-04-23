@@ -29,7 +29,7 @@ def run(times, validation, gpu, window_width, plot, epoch):
         acc_col.append(acc)
 
         if i == times - 1 and plot:
-            heatmap(y_true, y_pred, "ConV1D_"+str(NUM_CLASSES))
+            heatmap(y_true, y_pred, "ConV1D_"+str(NUM_CLASSES)+"_")
     
     if times > 1:
         print(np.round(acc_col,2))

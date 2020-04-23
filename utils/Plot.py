@@ -2,6 +2,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import pandas as pd
+import os
+import time
+
 from sklearn.metrics import *
 from utils.constants import *
 
@@ -49,20 +52,24 @@ def heatmap(y_true, y_pred, name):
     clf_report2 = classification_report(y_true, y_pred, digits=4,target_names=target_names)
     print(clf_report2)
 
-    f, ax= plt.subplots(figsize=(12,10))
+    f, ax= plt.subplots(figsize=(6,5))
     sns.heatmap(pd.DataFrame(clf_report).iloc[:-1, :-3].T, 
                 annot=True, cmap="Blues_r", fmt=".4f")
     ax.set_title("Classification Report")
     f.tight_layout()
-    plt.savefig("plots/"+DATE+name+"_classification_report.jpg")
+    if os.path.isdir("plots/"+DATE):
+        plt.savefig("plots/"+DATE+name+time.strftime('%H:%M:%S')+"_classification_report.jpg")
+    else:
+        os.mkdir("plots/"+DATE)
+        plt.savefig("plots/"+DATE+name+time.strftime('%H:%M:%S')+"_classification_report.jpg")
     f.clf()
 
-    f, ax= plt.subplots(figsize=(10,10))
+    f, ax= plt.subplots(figsize=(5,5))
     sns.heatmap(pd.DataFrame(clf_cm, index=target_names, columns=target_names).T, 
                     annot=True, cmap="BuGn", fmt="d")
     ax.set_title("Confusion Matrix")
     f.tight_layout()
-    plt.savefig("plots/"+DATE+name+"_confusion_matrix.jpg")
+    plt.savefig("plots/"+DATE+name+time.strftime('%H:%M:%S')+"_confusion_matrix.jpg")
 
 
 
