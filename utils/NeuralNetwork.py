@@ -102,7 +102,7 @@ class StackedAutoEncoder(nn.Module):
         super(StackedAutoEncoder, self).__init__()
         self.layer1 = nn.Sequential(*list(AE1.children())[:-2])
         self.layer2 = nn.Sequential(*list(AE2.children())[:-2])
-        self.layer3 = nn.Linear(AE2_DIM,NUM_CLASSES)
+        self.layer3 = nn.Linear(AE2_DIM, NUM_CLASSES)
     
     def _class_name(self):
         return 'StackedAutoEncoder'
