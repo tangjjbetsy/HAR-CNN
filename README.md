@@ -1,9 +1,5 @@
 # Work Summary
 
-[TOC]
-
-
-
 ## Intro
 
 Human Activity Recognition (HAR): Based on data collected by sensors of the smartphone, we hope to recognize the human activity pattern. Generally, the embedded sensors in the smartphone are accelerometer and gyroscope, so we could capture acceleration and angular velocity at some frequency. Deep neural networks applied to this project are expected to learn features of human acticity from those time series data and help identify the type of activity when new sensor signals are given.
@@ -14,7 +10,7 @@ Human Activity Recognition (HAR): Based on data collected by sensors of the smar
 
 2. <div style="color:blue">We also aim to detect the specific type of human activity switching inside a window.  </div>
 
-## Dataset (UCI Smartphone)
+## Dataset ([UCI Smartphone](https://archive.ics.uci.edu/ml/datasets/human+activity+recognition+using+smartphones))
 
 ### AIM I
 
@@ -411,6 +407,7 @@ BATCH_SIZE = 64
   <img src="plots/2020.4.23/ConV1D_4_classification_report.jpg" width="50%">
   <img src="plots/2020.4.23/ConV1D_4_confusion_matrix.jpg" width="45%">
 </div>
+
 ##### Type4+50% Cut
 
 <div align="center">
