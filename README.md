@@ -76,7 +76,7 @@ Experiments: AIM I
 
 #### Data
 
-There are three typed of data: Total Acceleration (body + gravity), Body Acceleration, and Body Gyroscope. Each type has three dimensions (**x,y,z**), which means we have 9 variables varing through time.
+There are three types of data: Total Acceleration (body + gravity), Body Acceleration, and Body Gyroscope. Each type has three dimensions (**x,y,z**), which means we have 9 variables varing through time.
 
 #### Network Model
 
@@ -106,6 +106,7 @@ There are three typed of data: Total Acceleration (body + gravity), Body Acceler
   <td>(samples, 6), SoftMax</td>
   </tr>
 </table>
+
 #### Constants
 
 ```
@@ -244,6 +245,7 @@ Finally, we get a **561-feature vector** with time and frequency domain variable
   <td>input_dim(5), output_dim(80), ReLu</td>
   </tr>
 </table>
+
 #### Constants
 
 ```
@@ -380,6 +382,7 @@ We create the dataset from the original data.
   <td style="color:blue">(samples, 16), SoftMax</td>
   </tr>
 </table>
+
 #### Constants
 
 ```
