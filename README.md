@@ -1,4 +1,4 @@
-# Work Summary
+# Work Summary for Human Activity Recognition
 
 ## Intro
 
